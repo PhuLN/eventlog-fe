@@ -7,8 +7,8 @@
     <form>
       <div class="field">
         <label class="control field-animation">
-          <input v-model="email" class="login-input input" type="text" required autofocus="">
-          <div class="label-field has-text-grey">Email</div>
+          <input v-model="username" class="login-input input" type="text" required autofocus="">
+          <div class="label-field has-text-grey">Username</div>
         </label>
       </div>
 
@@ -29,6 +29,20 @@
 <script>
 export default {
   name: 'Login',
+  data() {
+    return {
+      username: '',
+      password: '',
+    };
+  },
+  methods: {
+    attemptLogin() {
+      this.$store.dispatch('userLogin', {
+        username: this.username,
+        password: this.password,
+      });
+    },
+  },
 };
 </script>
 
